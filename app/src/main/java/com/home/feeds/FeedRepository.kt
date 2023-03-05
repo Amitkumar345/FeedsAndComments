@@ -12,20 +12,18 @@ class FeedRepository {
 
             val list = mutableListOf<FeedPost>()
             for (i in 1..limit) {
-                val person = Person("Ayush Agrawal", "")
-                val postContent = PostContent(
-                    if (i % 2 == 0) PostType.QUESTION else PostType.MARKETING,
-                    Constants.POST_TEXT,
-                    ""
-                )
-                list.add(FeedPost(i, person, postContent, i * 10, (i * 54) % 100))
+                list.add(getPostAt(i))
             }
             return FeedsResponse(list, page, limit)
         }
 
         fun getPostAt(id: Int): FeedPost {
             val person = Person("Ayush Agrawal", "")
-            val postContent = PostContent(PostType.QUESTION, Constants.POST_TEXT, "")
+            val postContent = PostContent(
+                if (id % 2 == 0) PostType.QUESTION else PostType.MARKETING,
+                Constants.POST_TEXT,
+                ""
+            )
             return FeedPost(id, person, postContent, id * 10, (id * 54) % 100)
         }
 
