@@ -34,7 +34,7 @@ class FeedRepository {
             var list = mutableListOf<Comment>()
             for (i in 1..20) {
                 val person = Person("Amar Singh", "")
-                list.add(Comment(person, Constants.COMMENT, i * 3 == 0))
+                list.add(Comment(person, Constants.COMMENT, i % 3 == 2))
             }
             return list
         }
